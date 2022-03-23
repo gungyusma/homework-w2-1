@@ -1,0 +1,21 @@
+input {
+  padding: 10px;
+  margin: 10px;
+  
+}
+
+button {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  
+}
+
+.App h2 {
+  color: gray;
+}
+
+.App {
+  text-align: center;
+  margin-top: 30px;
+}
