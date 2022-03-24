@@ -1,13 +1,12 @@
-import Button from "../component/Button";
+import Button from "../component/Button/Button";
 import data from "../data/data";
-import '../component/App.css';
+import Music from "../component/Music/Music";
+import '../App.css';
 const Home = () => {
 
     return ( 
         <div className="App">  
-            <img src={data.album.images[1].url} alt="cover"/>
-            <h1>{data.name}</h1>
-            <h2>{data.album.artists[0].name}</h2>
+            <Music image={data.album.images[1].url} name={data.name} album={data.album.artists[0].name}/>
             <Button /> 
         </div>
         
