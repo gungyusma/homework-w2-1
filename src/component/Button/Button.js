@@ -1,6 +1,7 @@
+import './Button.css';
 function Button() {
     return  (
-        <button primary='true'>Select</button>
+        <button className="btn-select">Select</button>
     )
 }
 

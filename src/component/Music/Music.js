@@ -1,9 +1,13 @@
-const Music = props => {
+import Button from "../Button/Button";
+import './Music.css';
+const Music = ({props}) => {
     return ( 
-        <div>  
-            <img src={props.image} alt="cover"/>
-            <h1>{props.name}</h1>
-            <h2>{props.album}</h2>
+        <div className="Tracks">  
+                <img src={props.album.images[1].url} alt="cover"/>
+                <h3>{props.name}</h3>
+                {/* <p>{props.album.name}</p> */}
+                <p>{props.album.artists[0].name}</p>
+                <Button />             
         </div>       
     )
 }
