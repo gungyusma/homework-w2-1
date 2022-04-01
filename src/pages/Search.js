@@ -1,50 +1,81 @@
-import { Component } from "react/cjs/react.production.min";
+import { useState } from 'react';
 import Music from "../component/Music/Music";
 import '../App.css';
 
-class Search extends Component {
-    state = {
-        searchQuery: "",
-        Result: []
-    }
+function Search(props) {
+    const [searchQuery, setsearchQuery] = useState("")
+    const [Result, setResult] = useState([])
+    //const [SelectedItems, setSelectedItems] = useState([])
+    const [SelectedQuery, setSelectedQuery] = useState([])
 
-    handleSearch = (event) => {
+    const handleSearch = (event) => {
         event.preventDefault();
-        fetch(`https://api.spotify.com/v1/search?q=${this.state.searchQuery}&type=track`, {
+        fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track`, {
             method: 'GET', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + this.props.token
+                'Authorization': 'Bearer ' + props.token
             }
          })
         .then((response) => response.json())
         .then((lists) =>
-        this.setState({Result: lists.tracks.items})
+            setResult(lists.tracks.items)
          ).catch((error) => console.log(error))
     }
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={(event) => this.handleSearch(event)}>
-                    <input
-                    value={this.state.searchQuery}
-                    placeholder="Search something"
-                    className="input-search"
-                    onChange={(event) => this.setState({searchQuery: event.target.value})}
-                    ></input>
-                    <button className="btn-search">Search</button>
-                </form>
-                <h1 className="heading1">Current search</h1>
-                <ul className="content">
-                {this.state.Result.map(e =>
-                <li >
-                    <Music props={e}/>
-                </li> )} 
-                </ul>
-            </div>
-        )
+    const addSelected = (tracks) => {
+        var hash = tracks.split(":")[2];
+        return fetch(`https://api.spotify.com/v1/tracks/${hash}`, {
+        method: 'GET', headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + props.token
+            }
+        }).then(res => res.json())
+        .then((lists) => setSelectedQuery([...SelectedQuery, lists]))
+        .catch((error) => console.log(error))   
     }
+
+    const removeSelected = (tracks) => {
+        let hardCopy = [...SelectedQuery];
+        console.log()
+        hardCopy = hardCopy.filter((item) => item.uri !== tracks);
+        setSelectedQuery(hardCopy);
+    }
+
+    return (
+        <div>
+            <form onSubmit={(event) => handleSearch(event)}>
+                <input
+                value={searchQuery}
+                placeholder="Search something"
+                className="input-search"
+                onChange={(event) => setsearchQuery(event.target.value)}
+                ></input>
+                <button className="btn-search">Search</button>
+            </form>
+            <h1 className="heading1">Your playlist</h1>
+
+
+            <ul className="content">
+            {SelectedQuery.map(e =>
+            <li >
+                <Music data={e} unselect={removeSelected} status={false}/>
+            </li> )} 
+            </ul>
+
+
+            <h1 className="heading1">Current search</h1>
+            <ul className="content">
+            {Result.map(e =>
+            <li >
+                <Music data={e} addselect={addSelected} unselect={removeSelected} status={true}/>
+            </li> )} 
+            </ul>
+
+        </div>
+    )
+    
 }
 
 export default Search;

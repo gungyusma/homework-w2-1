@@ -15,3 +15,18 @@
 h3 {
     font-size: 16px;
 }
+
+.btn-select {
+    padding: 10px 5px;
+    width: 90%;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    transition: all 0.5s;
+}
+
+.btn-select:hover{
+    background-color: rgb(177, 6, 120); 
+    cursor: pointer;
+}
