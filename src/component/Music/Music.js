@@ -1,13 +1,28 @@
-import Button from "../Button/Button";
+
+import { useState } from 'react';
 import './Music.css';
-const Music = ({props}) => {
+const Music = ({data, addselect, unselect, status}) => {
+    const [buttontext, setButtonText] = useState(status ? "Select" : "Unselect")
+    const [Selected, setSelected] = useState(status)
+    const handleSelect = () => {
+        if (Selected) {
+            setSelected(false)
+            setButtonText("Unselect")
+            addselect(data.uri)
+        } else {
+            setSelected(true)
+            setButtonText("Select")
+           unselect(data.uri)  
+        }
+
+    }
     return ( 
         <div className="Tracks">  
-                <img src={props.album.images[1].url} alt="cover"/>
-                <h3>{props.name}</h3>
-                {/* <p>{props.album.name}</p> */}
-                <p>{props.album.artists[0].name}</p>
-                <Button />             
+                <img src={data.album.images[1].url} alt="cover"/>
+                <h3>{data.name}</h3>
+                {/* <p>{data.album.name}</p> */}
+                <p>{data.album.artists[0].name}</p>
+                <button className="btn-select" onClick={handleSelect}>{buttontext}</button>        
         </div>       
     )
 }
