@@ -1,22 +1,21 @@
-import { useState , useEffect } from 'react';
+import { useState } from 'react';
 import './Track.css';
+import { useSelector } from 'react-redux';
 
 function Form(props) {
-    //const [playlistItem, setPlaylistItem] = useState([]);
+    const token = useSelector((state) => state.accesstoken.value);
     const [userId, setUserId] = useState('');
     const [fields, setFields] = useState({
         title: '',
         description: ''
     });
-    const [playlistId, setPlaylistId] = useState('')
-
     
     const fetchUser = () => {
         fetch('https://api.spotify.com/v1/me', {
             method: 'GET', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + props.token
+                'Authorization': 'Bearer ' + token
                 }
             }).then(res => res.json())
             .then(i => setUserId(i.id))
@@ -28,7 +27,7 @@ function Form(props) {
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + props.token
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
                 name: fields.title,
@@ -37,18 +36,33 @@ function Form(props) {
             })
             }
         ).then((res) => res.json())
-        .then(item => setPlaylistId(item.id))
+        .then((item) => {
+            fetch(`https://api.spotify.com/v1/playlists/${item.id}/tracks`, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                'uris': props.SelectedQuery.map((track) => track.uri),
+            }),
+            }
+            ).then((res) => res.json())
+            .then(i => console.log(props.SelectedQuery.map((track) => track.uri)))
+            .catch((error) => console.log(error))
+
+            showPlaylist();
+        })
         .catch((error) => console.log(error))
     }
 
-    const showPlaylist = () => {
+    const showPlaylist = (id) => {
         fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + props.token
+                'Authorization': 'Bearer ' + token
             }}).then((res) => res.json())
-        .then(item => console.log(item))
-        .catch((error) => console.log(error))
+            .then(item => console.log(item))
+            .catch((error) => console.log(error))
     }
 
     const handleFields = (e) => {
@@ -58,28 +72,13 @@ function Form(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        fetchUser();
         createPlaylist();
-        AddItemToPlaylist();
-        showPlaylist();
+        //AddItemToPlaylist();
+        //showPlaylist();
         alert("Playlist added!")
     }
 
-    useEffect(() => {
-        fetchUser();
-    })
-
-    const AddItemToPlaylist = () => {
-        fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-            method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ' + props.token
-            },
-            data: props.SelectedQuery
-            }
-        ).then((res) => res.json())
-        .then(i => console.log(playlistId))
-        .catch((error) => console.log(error))
-    }
    
     return (
         <div>
@@ -90,8 +89,9 @@ function Form(props) {
                 value={fields.title}
                 onChange={handleFields}
                 placeholder="Your playlist's title"
-                className="input-search"
-                ></input>
+                className="input-play"
+                minLength="10"
+                ></input><br></br>
 
                 <input
                 type="text"
@@ -99,9 +99,10 @@ function Form(props) {
                 value={fields.description}
                 onChange={handleFields}
                 placeholder="Description"
-                className="input-search"
-                ></input>
-                <button type="Submit" className="btn-search">Submit</button>
+                className="input-play"
+                ></input><br></br>
+                
+                <button type="Submit" className="btn-search">Create</button>
             </form>
         </div> 
     )
