@@ -1,10 +1,11 @@
-
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import './Track.css';
+
 const Track = (props) => {
     //const [buttontext, setButtonText] = useState(status ? "Select" : "Unselect")
     const [Selected, setSelected] = useState(props.status)
-    //const { uri } = SelectedQuery.uri;
+    const token = useSelector((state) => state.accesstoken.value);
 
     const handleSelect = () => {
         setSelected(!Selected)
@@ -12,7 +13,7 @@ const Track = (props) => {
             let hardCopy = [...props.SelectedQuery];
             console.log()
             hardCopy = hardCopy.filter((item) => item.uri !== props.data.uri);
-            props.setSelectedQuery(hardCopy.external_urls.uri);
+            props.setSelectedQuery(hardCopy);
         } else {
             var hash = props.data.uri.split(":")[2];
             //console.log(hash)
@@ -20,10 +21,13 @@ const Track = (props) => {
             method: 'GET', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + props.token
+                'Authorization': 'Bearer ' + token
                 }
             }).then(res => res.json())
-            .then((lists) => props.setSelectedQuery([...props.SelectedQuery, lists]))
+            .then((lists) => {
+                props.setSelectedQuery([...props.SelectedQuery, lists])
+                //console.log(props.status)
+            })
             .catch((error) => console.log(error))
             }
     }

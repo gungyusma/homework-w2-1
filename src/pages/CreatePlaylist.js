@@ -1,11 +1,11 @@
 import Search from "../component/CreatePlaylist/Search"
-//import Form from "../component/CreatePlaylist/Form"
+//import { useSelector } from "react-redux";
 
-function CreatePlaylist(props) {
+function CreatePlaylist() {
+    
     return  (
         <div>
-        <Search token={props.token}/>
-
+        <Search />
         </div>
     )
 }
