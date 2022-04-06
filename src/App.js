@@ -1,13 +1,13 @@
-import { Provider } from "react-redux";
-import store from "./store";
-import Login from "./Login";
+//import CreatePlaylist from "./pages/CreatePlaylist";
+import Routes from "./routes";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
   return (
-    <Provider store={store}>
-        <div className="App">
-            <Login />
-        </div>
-    </Provider>
+    <>
+      <Router>
+          <Routes />
+      </Router>    
+    </>
   );
 }
