@@ -1,11 +1,9 @@
-import Search from "../component/CreatePlaylist/Search"
-//import { useSelector } from "react-redux";
+import Search from "../component/CreatePlaylist/Search";
 
 function CreatePlaylist() {
-    
     return  (
         <div>
-        <Search />
+            <Search />
         </div>
     )
 }

@@ -1,10 +1,10 @@
-import CreatePlaylist from './pages/CreatePlaylist'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken } from "./token-slice";
 import { useEffect } from 'react';
+import './App.css';
 
 function Login() {
-  const token = useSelector((state) => state.accesstoken.value);
+  //const token = useSelector((state) => state.accesstoken.value);
   const dispatch = useDispatch();
 
   const handleToken = () => {
@@ -16,8 +16,8 @@ function Login() {
   })
     
   return (
-    <div>
-      {token !== undefined ? <CreatePlaylist /> : <button onClick={handleToken}>Login</button>}
+    <div className="loginpage">
+        <button onClick={handleToken}>Login with Spotify</button>
     </div>
   );
   
