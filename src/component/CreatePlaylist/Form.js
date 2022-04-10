@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import React from 'react';
+import { useState , useEffect } from 'react';
 import './Track.css';
 import { useSelector } from 'react-redux';
+import List from './List';
+import PropTypes from 'prop-types';
+function Form({SelectedQuery, setSelectedQuery}) {
+    
+    Form.propTypes = {
+        SelectedQuery : PropTypes.any,
+        setSelectedQuery : PropTypes.any,
+    }
 
-function Form(props) {
     const token = useSelector((state) => state.accesstoken.value);
-    const [userId, setUserId] = useState('');
+    const [userId, setUserId] = useState(null);
     const [fields, setFields] = useState({
         title: '',
         description: ''
@@ -43,27 +51,31 @@ function Form(props) {
                 'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
-                'uris': props.SelectedQuery.map((track) => track.uri),
+                'uris': SelectedQuery.map((track) => track.uri),
             }),
             }
             ).then((res) => res.json())
-            .then(i => console.log(props.SelectedQuery.map((track) => track.uri)))
+            .then(console.log(SelectedQuery.map((track) => track.uri)))
             .catch((error) => console.log(error))
 
-            showPlaylist();
+            console.log(userId);
         })
         .catch((error) => console.log(error))
     }
 
-    const showPlaylist = (id) => {
-        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }}).then((res) => res.json())
-            .then(item => console.log(item))
-            .catch((error) => console.log(error))
-    }
+    // const showPlaylist = () => {
+    //     fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Authorization': 'Bearer ' + token
+    //         }}).then((res) => res.json())
+    //         .then(item => console.log(item))
+    //         .catch((error) => console.log(error))
+    // }
+
+    useEffect(() => {
+        fetchUser();
+    })
 
     const handleFields = (e) => {
         const { name, value } = e.target
@@ -74,15 +86,13 @@ function Form(props) {
         e.preventDefault();
         fetchUser();
         createPlaylist();
-        //AddItemToPlaylist();
-        //showPlaylist();
         alert("Playlist added!")
     }
 
    
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='formplaylist'>
+            <form>
                 <input
                 type="text"
                 name="title"
@@ -91,18 +101,33 @@ function Form(props) {
                 placeholder="Your playlist's title"
                 className="input-play"
                 minLength="10"
+                required
                 ></input><br></br>
 
                 <input
                 type="text"
-                name="description"
+                name="description"  
                 value={fields.description}
                 onChange={handleFields}
                 placeholder="Description"
                 className="input-play"
+                required
                 ></input><br></br>
-                
-                <button type="Submit" className="btn-search">Create</button>
+                <div className='playlistwrap'>
+                    <table>
+                        <tbody>
+                            {SelectedQuery.map(e =>
+                                <List 
+                                data={e}
+                                status={true}
+                                setSelectedQuery={setSelectedQuery} 
+                                SelectedQuery={SelectedQuery}
+                                key={e.id}
+                                />)} 
+                        </tbody>
+                    </table>
+                </div>
+                <button type="Submit" className="btn-search" onClick={handleSubmit}>Create</button>
             </form>
         </div> 
     )

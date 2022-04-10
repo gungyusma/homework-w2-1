@@ -1,6 +1,3 @@
-html {
-    background-color: #3a3b3c;
-  }
 
 .Tracks {
     text-align: center;
@@ -50,7 +47,7 @@ input {
   .App {
     width: 100%;
     height: 100%;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    
   }
   .content {
     display: flex;
@@ -78,36 +75,39 @@ input {
   }
   
   form {
-    text-align: left;
-    padding: 50px 0px;
-    margin-left: 20px;
+    margin-left: 30px;
   }
   
   .input-search {
-    width: 40%;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #aeaeae43;
+    width: 30%;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #aeaeae15;
     border: none;
+    margin-top: 20px;
     color: white;
+    font-weight: bold;
     /* box-shadow: 1px 1px 5px #272626; */
   }
 
   .input-play {
-    width: 20%;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #aeaeae43;
+    width: 90%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: transparent;
     border: none;
+    border-bottom: 1px solid #aeaeae43;
     color: white;
+    text-align: center;
+    font-weight: bold;
     /* box-shadow: 1px 1px 5px #272626; */
   }
   
 
   .btn-search {
-    padding: 15px 30px;
+    padding: 15px 50px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 30px;
     border: none;
     background-color: rgb(61, 61, 61);
     box-shadow: 1px 1px 5px #272626;
@@ -123,10 +123,64 @@ input {
   
   .heading1 {
     color: white;
-    margin: 40px 30px 0 30px;
+    margin: 40px 30px 0 50px;
     font-size: 20px;
   }
 
   .Tracks p {
     font-size: 13px;
   }
+
+.playlistwrap {
+  /* width: 100%; */
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.playlistwrap table {
+  width: 100%;
+  color: white;
+  margin: 30px;
+}
+
+  
+td {
+  text-align: left;
+  padding: 5px;
+  border-bottom: 0.5px solid rgba(120, 120, 120, 0.158);
+}
+
+.List img {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.formplaylist {
+  text-align: center;
+  margin-top: 20px;
+  /* background-image: linear-gradient(180deg, rgba(148, 0, 91, 0.168), rgba(62, 62, 62, 0.174));
+  margin: 30px;
+  padding: 30px;
+  border-radius: 5px; */
+}
+
+.List button{
+  border: 0.5px solid rgb(144, 144, 144);
+  border-radius: 30px;
+  color: rgb(179, 179, 179);
+  background-color: transparent;
+  padding: 10px 20px;
+
+}
+
+.heading2 {
+
+  color: white;
+  font-size: 20px;
+  padding-left: 60px;
+  margin-top: 60px; 
+}

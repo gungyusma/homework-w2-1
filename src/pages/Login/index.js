@@ -1,8 +1,8 @@
+import React from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from "./token-slice";
+import { setToken } from "../../token-slice";
 import { useEffect } from 'react';
-import './App.css';
-
+import './Login.css';
 function Login() {
   //const token = useSelector((state) => state.accesstoken.value);
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ function Login() {
     
   return (
     <div className="loginpage">
+        <h1>Music for every mood.</h1>
         <button onClick={handleToken}>Login with Spotify</button>
     </div>
   );

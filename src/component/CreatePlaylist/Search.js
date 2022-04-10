@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import Track from './Track';
 import './Track.css';
@@ -27,43 +28,33 @@ function Search() {
     }
 
     return (
-        <div>
-            <h1 className="heading1">Create your own custom playlist!</h1>
+        <div className='CreatePlaylist'>
+            <h1 className="heading2">Create Playlist</h1>
             
-            <Form SelectedQuery={SelectedQuery} />
-            <ul className="content">
-            {SelectedQuery.map(e =>
-            <li>
-                <Track 
-                data={e}
-                status={true}
-                setSelectedQuery={setSelectedQuery} 
-                SelectedQuery={SelectedQuery}
-                />
-            </li> )} 
-            </ul>
-
-            <h1 className="heading1">Choose songs you want to add</h1>
+            <Form SelectedQuery={SelectedQuery} setSelectedQuery={setSelectedQuery} className='formplaylist'/>
+            <h1 className="heading1">Let`s find something for your playlist</h1>
             <form onSubmit={(event) => handleSearch(event)}>
+                    <input
+                    value={searchQuery}
+                    placeholder="Search something"
+                    className="input-search"
+                    onChange={(event) => setsearchQuery(event.target.value)}
+                    ></input>
+                    {/* <button className="btn-search">Search</button> */}
+                </form>
+                <ul className="content">
+                {Result.map(e =>
+                <li key={e.id}>
+                    <Track 
+                    data={e} 
+                    status={false} 
+                    setSelectedQuery={setSelectedQuery} 
+                    SelectedQuery={SelectedQuery} 
+                    />
+                </li> )} 
+                </ul>   
 
-                <input
-                value={searchQuery}
-                placeholder="Search something"
-                className="input-search"
-                onChange={(event) => setsearchQuery(event.target.value)}
-                ></input>
-                <button className="btn-search">Search</button>
-            </form>
-            <ul className="content">
-            {Result.map(e =>
-            <li >
-                <Track data={e} 
-                status={false} 
-                setSelectedQuery={setSelectedQuery} 
-                SelectedQuery={SelectedQuery} 
-                />
-            </li> )} 
-            </ul>
+            
 
         </div>
     )

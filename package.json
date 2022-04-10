@@ -44,5 +44,9 @@
       "not dead",
       "not op_mini all"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "src": "^1.1.2"
   }
 }
