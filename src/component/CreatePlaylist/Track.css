@@ -1,7 +1,7 @@
 
 .Tracks {
-    text-align: center;
-    
+  text-align: center;
+  padding: 0 5px;
 }
 
 .Tracks img {
@@ -21,7 +21,7 @@ h3 {
     border: none;
     border-radius: 20px;
     align-self: bottom;
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(43, 43, 43);
     color: white;
     transition: all 0.5s;
 }
@@ -52,7 +52,7 @@ input {
   .content {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content:space-evenly;
   }
   
   ul {
@@ -67,11 +67,11 @@ input {
       inline-size: 150px;
       
       padding: 10px 5px;
-      margin: 15px;
+      margin: 17px;
       color: white;
       
       border-radius: 20px;
-      box-shadow: 3px 3px 8px #272626;
+      box-shadow: 3px 3px 7px #000000;
   }
   
   form {
@@ -134,7 +134,7 @@ input {
 .playlistwrap {
   /* width: 100%; */
   /* height: 100vh; */
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
 
