@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import './Track.css';
+import './List.css';
 import PropTypes from 'prop-types';
 const List = ({SelectedQuery, setSelectedQuery, data, status}) => {
     List.propTypes = {

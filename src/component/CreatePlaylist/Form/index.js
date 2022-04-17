@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState , useEffect } from 'react';
-import './Track.css';
+import { useState } from 'react';
+import './Form.css';
 import { useSelector } from 'react-redux';
-import List from './List';
+import List from '../List';
 import PropTypes from 'prop-types';
+
 function Form({SelectedQuery, setSelectedQuery}) {
     
     Form.propTypes = {
@@ -12,7 +13,7 @@ function Form({SelectedQuery, setSelectedQuery}) {
     }
 
     const token = useSelector((state) => state.accesstoken.value);
-    const [userId, setUserId] = useState(null);
+    const [userId, setUserId] = useState("");
     const [fields, setFields] = useState({
         title: '',
         description: ''
@@ -62,20 +63,6 @@ function Form({SelectedQuery, setSelectedQuery}) {
         })
         .catch((error) => console.log(error))
     }
-
-    // const showPlaylist = () => {
-    //     fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': 'Bearer ' + token
-    //         }}).then((res) => res.json())
-    //         .then(item => console.log(item))
-    //         .catch((error) => console.log(error))
-    // }
-
-    useEffect(() => {
-        fetchUser();
-    })
 
     const handleFields = (e) => {
         const { name, value } = e.target

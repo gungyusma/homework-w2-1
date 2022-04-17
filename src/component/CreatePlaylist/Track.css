@@ -1,187 +1,25 @@
-
-.Tracks {
-  text-align: center;
-  padding: 0 5px;
-}
-
-.Tracks img {
-    border-radius: 15px;
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-}
-
-h3 {
-    font-size: 15px;
-}
-
-.btn-select {
-    padding: 10px 5px;
-    width: 90%;
-    border: none;
-    border-radius: 20px;
-    align-self: bottom;
-    background-color: rgb(43, 43, 43);
-    color: white;
-    transition: all 0.5s;
-}
-
-.btn-select:hover{
-    background-color: rgb(177, 6, 120); 
-    cursor: pointer;
-}
-
-
-input {
-    padding: 10px;
-    margin: 10px;
-    
-  }
-  
-  
-  
-  .App h2 {
+.App h2 {
     color: rgb(61, 61, 61);
   }
   
   .App {
     width: 100%;
     height: 100%;
-    
   }
-  .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0px;
-    padding: 10px 0px;
-    text-align: center;
-  }
-  
-  
-  li {
-      inline-size: 150px;
-      
-      padding: 10px 5px;
-      margin: 17px;
-      color: white;
-      
-      border-radius: 20px;
-      box-shadow: 3px 3px 7px #000000;
-  }
-  
-  form {
-    margin-left: 30px;
-  }
+
   
 
-  .input-search {
-    width: 30%;
-    padding: 12px;
-    border-radius: 5px;
-    background-color: #aeaeae15;
-    border: none;
-    margin-top: 20px;
-    color: white;
-    font-weight: bold;
-    /* box-shadow: 1px 1px 5px #272626; */
-  }
-
-  .input-play {
-    width: 90%;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #aeaeae43;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    /* box-shadow: 1px 1px 5px #272626; */
-  }
   
 
-  .btn-search {
-    padding: 15px 50px;
-    margin: 10px;
-    border-radius: 30px;
-    border: none;
-    background-color: rgb(61, 61, 61);
-    box-shadow: 1px 1px 5px #272626;
-    color: white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    transition: all 0.5s;
-  }
-  
-  .btn-search:hover {
-      background-color: rgb(177, 6, 120); 
-      cursor: pointer;
-  }
-  
-  .heading1 {
-    color: white;
-    margin: 40px 30px 0 50px;
-    font-size: 20px;
-  }
 
-  .Tracks p {
-    font-size: 13px;
-  }
 
-.playlistwrap {
-  /* width: 100%; */
-  /* height: 100vh; */
-  display: grid;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.playlistwrap table {
-  width: 100%;
-  color: white;
-  margin: 30px;
-}
 
   
-td {
-  text-align: left;
-  padding: 5px;
-  border-bottom: 0.5px solid rgba(120, 120, 120, 0.158);
-}
 
-.List img {
-  width: 50px;
-  height: 50px;
-  margin: 0;
-}
 
-.formplaylist {
-  text-align: center;
-  margin-top: 20px;
-  /* background-image: linear-gradient(180deg, rgba(148, 0, 91, 0.168), rgba(62, 62, 62, 0.174));
-  margin: 30px;
-  padding: 30px;
-  border-radius: 5px; */
-}
+  
 
-.List button{
-  border: 0.5px solid rgb(144, 144, 144);
-  border-radius: 30px;
-  color: rgb(179, 179, 179);
-  background-color: transparent;
-  padding: 10px 20px;
 
-}
+  
 
-.heading2 {
 
-  color: white;
-  font-size: 20px;
-  padding-left: 60px;
-  margin-top: 60px; 
-}

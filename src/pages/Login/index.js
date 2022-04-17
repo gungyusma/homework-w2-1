@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../token-slice";
+import { setToken } from "../../store/token-slice";
 import { useEffect } from 'react';
 import './Login.css';
 function Login() {
@@ -8,7 +8,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleToken = () => {
-    window.location.href= `https://accounts.spotify.com/authorize?client_id=e2d2b2820b4140c2b5e5628c3756709c&response_type=token&redirect_uri=http://localhost:3000&scope=playlist-modify-private`
+    window.location.href= `https://accounts.spotify.com/authorize?client_id=f43e3cdcf7214718ad9213d01ec771a4&response_type=token&redirect_uri=http://localhost:3000&scope=playlist-modify-private`
   } 
 
   useEffect(() => {
