@@ -1,0 +1,41 @@
+.gridItem {
+    text-align: center;
+    color: white;
+    padding: 15px 0px;
+    margin: 10px 40px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.19);
+  
+}
+.gridItem img {
+    border-radius: 100%;
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+}
+
+.gridItem h1 {
+    font-size: large;
+
+}
+
+.gridItem a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 50px;
+    line-height: 70px;
+    border-radius: 25px;
+    border: none;
+    COLOR:white;
+    width: 90%;
+    box-shadow: 1px 1px 5px #272626;
+    background-color: rgb(177, 6, 120); 
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px black;
+}
+
+.gridItem a:hover {
+    background-color: white;
+    color:#272626;
+    cursor: pointer;
+}

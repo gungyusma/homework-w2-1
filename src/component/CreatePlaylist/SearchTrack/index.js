@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import './Search.css';
 import { useSelector } from 'react-redux';
 
+function SearchTrack({ setResult }) {
 
-function Search({ setResult }) {
-
-    Search.propTypes = {
-        setResult: PropTypes
+    SearchTrack.propTypes = {
+        setResult: PropTypes.func
     }
+
     const [searchQuery, setsearchQuery] = useState([]);
     const token = useSelector((state) => state.accesstoken.value);
+
     const handleSearch = (event) => {
         event.preventDefault();
-        fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&`, {
+        fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=24`, {
             method: 'GET', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -28,10 +29,11 @@ function Search({ setResult }) {
     }
 
     return (
-        <div className='CreatePlaylist'>
-            <h1 className="heading1">Let`s find something for your playlist</h1>
+        <div className='search-bar'>
+            <h1 className="heading-one">Let`s find something</h1>
             <form onSubmit={(event) => handleSearch(event)}>
                         <input
+                        data-testid="search-bar"
                         className='input-search'
                         id="outlined" 
                         placeholder="Search something" 
@@ -43,4 +45,4 @@ function Search({ setResult }) {
     
 }
 
-export default Search;
+export default SearchTrack;

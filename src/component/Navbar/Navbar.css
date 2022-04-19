@@ -65,7 +65,7 @@
       text-align: left;
       margin: 150px 40px 40px 40px;
       padding: 15px;
-      border-radius: 20px;
+      border-radius: 10px;
       border: none;
       background-color: rgb(177, 6, 120);
       color: white;
@@ -78,7 +78,18 @@
   }
 
   .unactive-nav {
-      margin: 50px;
+      margin: 50px 50px 70px 50px;
       width: 100%;
       cursor: pointer;
   }
+
+  .btn-logout-unactive {
+    float: right;
+    margin-right: 10%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(177, 6, 120);
+    color: white;
+    font-weight: bolder;
+}

@@ -36,21 +36,20 @@
     margin: 30px;
   }
 
-  .btn-search {
-    padding: 15px 50px;
+  .btn-create {
+    padding: 12px 50px;
     margin: 10px;
-    border-radius: 30px;
+    border-radius: 10px;
     border: none;
     COLOR:white;
-    box-shadow: 1px 1px 5px #272626;
+    box-shadow: 1px 1px 4px #272626;
     background-color: rgb(177, 6, 120); 
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
   }
   
-  .btn-search:hover {
+  .btn-create:hover {
       color: #272626;
-      
       cursor: pointer;
       background-color: white;
   }

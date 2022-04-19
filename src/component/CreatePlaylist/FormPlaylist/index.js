@@ -2,12 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import './Form.css';
 import { useSelector } from 'react-redux';
-import List from '../List';
+import Track from '../TrackCard';
 import PropTypes from 'prop-types';
 
-function Form({SelectedQuery, setSelectedQuery}) {
+function FormPlaylist({SelectedQuery, setSelectedQuery}) {
     
-    Form.propTypes = {
+    FormPlaylist.propTypes = {
         SelectedQuery : PropTypes.any,
         setSelectedQuery : PropTypes.any,
     }
@@ -73,10 +73,8 @@ function Form({SelectedQuery, setSelectedQuery}) {
         e.preventDefault();
         fetchUser();
         createPlaylist();
-        alert("Playlist added!")
     }
 
-   
     return (
         <div className='formplaylist'>
             <form>
@@ -88,6 +86,7 @@ function Form({SelectedQuery, setSelectedQuery}) {
                 placeholder="Your playlist's title"
                 className="input-play"
                 minLength="10"
+                data-testid="input-playlist"
                 required
                 ></input><br></br>
 
@@ -97,6 +96,7 @@ function Form({SelectedQuery, setSelectedQuery}) {
                 value={fields.description}
                 onChange={handleFields}
                 placeholder="Description"
+                data-testid="input-playlist"
                 className="input-play"
                 required
                 ></input><br></br>
@@ -104,21 +104,22 @@ function Form({SelectedQuery, setSelectedQuery}) {
                     <table>
                         <tbody>
                             {SelectedQuery.map(e =>
-                                <List 
+                                <Track 
                                 data={e}
                                 status={true}
                                 setSelectedQuery={setSelectedQuery} 
                                 SelectedQuery={SelectedQuery}
                                 key={e.id}
+                                tracktype="list"
                                 />)} 
                         </tbody>
                     </table>
                 </div>
-                <button type="Submit" className="btn-search" onClick={handleSubmit}>Create</button>
+                <button type="Submit" className="btn-create" onClick={handleSubmit}>Create</button>
             </form>
         </div> 
     )
     
 }
 
-export default Form;
+export default FormPlaylist;

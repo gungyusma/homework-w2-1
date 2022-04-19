@@ -1,0 +1,11 @@
+.footer-container {
+    background-color: rgba(6, 6, 6, 0.274);
+    height: 50vh;
+    color: rgb(171, 171, 171);
+    margin-top: 150px;
+    padding: 50px;
+}
+
+.footer-container p {
+   margin: 50px;
+}

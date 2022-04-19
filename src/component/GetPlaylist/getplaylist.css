@@ -1,0 +1,20 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+
+.btn-playlist {
+   margin: 40px 0 50px 70px;
+   padding: 10px 50px;
+   border: 1px solid white;
+   background-color: transparent;
+   color: white;
+   border-radius: 20px;
+}
+
+.btn-playlist:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+ }

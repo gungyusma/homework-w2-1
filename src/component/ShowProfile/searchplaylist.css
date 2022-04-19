@@ -1,0 +1,51 @@
+.hero-item {
+    text-align: left;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    color: white;
+    padding-bottom: 5%;
+    border-bottom: 1px solid #353535;
+ 
+    
+}
+
+
+.profile-pic {
+    box-shadow: 1px 1px 5px #272626;
+    width: 20%;
+    height: 20%;
+    border-radius: 100%;
+    margin-left: 10%;
+}
+
+.user-greet {
+    margin-left: 40px;
+    margin-top: 40px;
+    line-height: 10px;
+}
+
+.user-greet h1 {
+    font-size: 70px;
+}
+
+.user-greet p {
+    font-size: 15px;
+}
+
+.user-greet a {
+    text-decoration: none;
+    padding: 10px 60px;
+    line-height: 70px;
+    border-radius: 30px;
+    border: none;
+    COLOR:white;
+    box-shadow: 1px 1px 5px #272626;
+    background-color: rgb(177, 6, 120); 
+}
+
+.user-greet a:hover {
+    color: #272626;
+    cursor: pointer;
+    background-color: white;
+}

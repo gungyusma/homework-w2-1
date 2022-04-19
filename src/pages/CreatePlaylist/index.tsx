@@ -1,17 +1,18 @@
 import React from "react";
-import Search from "../../component/CreatePlaylist/Search";
+import SearchTrack from "../../component/CreatePlaylist/SearchTrack";
 import { useState } from "react";
-import Form from "../../component/CreatePlaylist/Form";
-import Track from "../../component/CreatePlaylist/Track";
+import FormPlaylist from "../../component/CreatePlaylist/FormPlaylist";
+import Track from "../../component/CreatePlaylist/TrackCard";
 import { trackdata , searchresult } from "./types";
+
 function CreatePlaylist() {
     const [Result, setResult] = useState<trackdata[]>([])
     const [SelectedQuery, setSelectedQuery] = useState<searchresult[]>([])
     return  (
         <div>
             <h1 className="heading2">CREATE PLAYLIST</h1>
-            <Form SelectedQuery={SelectedQuery} setSelectedQuery={setSelectedQuery} className='formplaylist'/>
-            <Search setResult={setResult}/>
+            <FormPlaylist SelectedQuery={SelectedQuery} setSelectedQuery={setSelectedQuery} className='formplaylist'/>
+            <SearchTrack setResult={setResult}/>
             <ul className="content">
                 {Result.map(e =>
                 <li key={e.id}>
@@ -20,6 +21,7 @@ function CreatePlaylist() {
                     status={false} 
                     setSelectedQuery={setSelectedQuery} 
                     SelectedQuery={SelectedQuery} 
+                    tracktype="card"
                     />
                 </li> )} 
             </ul>   

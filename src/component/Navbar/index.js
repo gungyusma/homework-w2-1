@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { setToken } from "../../store/token-slice";
 import './Navbar.css';
 import { FaBars } from 'react-icons/fa';
-import {IoIosArrowBack} from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 import { SidebarData } from "./SidebarData";
 import { BiLogOut } from "react-icons/bi";
+
 function Navbar() {
     const token = useSelector((state) => state.accesstoken.value);
     const [isNavActive, setIsNavActive] = useState(false);
@@ -28,9 +29,15 @@ function Navbar() {
             <div className="unactive-nav">
                 <FaBars onClick={handleNav} color="white"/>
                 {console.log(isNavActive)}
+                <button onClick={handleLogout} className="btn-logout-unactive">
+                    <BiLogOut />
+                    <span>
+                        Logout
+                    </span>
+                    
+                </button>
             </div>
             <div className={isNavActive ? 'nav-menu active' : 'nav-menu'}>
-                
                 
                 <ul className="navigation-ul" onClick={handleNav}>
                     <li className='navbar-toggle'>
