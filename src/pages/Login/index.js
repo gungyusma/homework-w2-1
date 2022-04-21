@@ -15,7 +15,7 @@ function Login() {
 
   useEffect(() => {
     dispatch(setToken(window.location.hash.split("&")[0].split("=")[1]));
-  }, [])
+  })
     
   return (
     <div className="loginpage">
