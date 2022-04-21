@@ -1,6 +1,7 @@
-.container {
-    position: relative;
+.container-user {
+    width: 100%;
     text-align: center;
     color: white;
+    margin-top: 40px;
 }
 

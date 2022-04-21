@@ -1,7 +1,6 @@
 import React from 'react';
-import {AiFillHome} from "react-icons/ai";
-import {FaHeart} from "react-icons/fa";
-import {MdLibraryAdd} from 'react-icons/md';
+import {AiFillHome, AiOutlineUser} from "react-icons/ai";
+import {BiLibrary} from 'react-icons/bi';
 export const SidebarData = [
     {
         title: 'Home',
@@ -10,15 +9,15 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Create Playlist',
+        title: 'CreatePlaylist',
         path: '/CreatePlaylist',
-        icon: <MdLibraryAdd />,
+        icon: <BiLibrary />,
         cName: 'nav-text'
     },
     {
-        title: 'User Profile',
+        title: 'Profile',
         path: '/UserProfile',
-        icon: <FaHeart />,
+        icon: <AiOutlineUser />,
         cName: 'nav-text'
     }
 ]

@@ -4,36 +4,28 @@ import './Form.css';
 import { useSelector } from 'react-redux';
 import Track from '../TrackCard';
 import PropTypes from 'prop-types';
-
+import PopupSuccess from './PopupSuccess';
 function FormPlaylist({SelectedQuery, setSelectedQuery}) {
     
     FormPlaylist.propTypes = {
         SelectedQuery : PropTypes.any,
         setSelectedQuery : PropTypes.any,
     }
+    const [visibility, setVisibility] = useState(false);
 
+    const popupCloseHandler = () => {
+      setVisibility(false);
+    };
+    const user = useSelector((state) => state.userdetails.value)
     const token = useSelector((state) => state.accesstoken.value);
-    const [userId, setUserId] = useState("");
+
     const [fields, setFields] = useState({
         title: '',
         description: ''
     });
-    
-    const fetchUser = () => {
-        fetch('https://api.spotify.com/v1/me', {
-            method: 'GET', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-                }
-            }).then(res => res.json())
-            .then(i => setUserId(i.id))
-            .catch((error) => console.log(error))
-    }
-
 
     const createPlaylist = () => {
-        fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        fetch(`https://api.spotify.com/v1/users/${user.id}/playlists`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -56,10 +48,12 @@ function FormPlaylist({SelectedQuery, setSelectedQuery}) {
             }),
             }
             ).then((res) => res.json())
-            .then(console.log(SelectedQuery.map((track) => track.uri)))
+            .then(() => {
+                setFields({title: '', description: ''});
+                setSelectedQuery([]);
+                setVisibility(true);
+            })
             .catch((error) => console.log(error))
-
-            console.log(userId);
         })
         .catch((error) => console.log(error))
     }
@@ -71,13 +65,12 @@ function FormPlaylist({SelectedQuery, setSelectedQuery}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetchUser();
         createPlaylist();
     }
 
     return (
         <div className='formplaylist'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                 type="text"
                 name="title"
@@ -115,8 +108,13 @@ function FormPlaylist({SelectedQuery, setSelectedQuery}) {
                         </tbody>
                     </table>
                 </div>
-                <button type="Submit" className="btn-create" onClick={handleSubmit}>Create</button>
+                <button type="Submit" className="btn-create">Create</button>
             </form>
+            <PopupSuccess
+            onClose={popupCloseHandler}
+            show={visibility}
+            title="Success"
+            ></PopupSuccess>
         </div> 
     )
     

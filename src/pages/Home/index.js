@@ -1,41 +1,66 @@
 import React from "react";
 import { useState } from "react";
 import './home.css'
-import SearchTrack from "../../component/CreatePlaylist/SearchTrack";
-import Track from "../../component/CreatePlaylist/TrackCard";
+import SearchTrack from "../../component/SearchTrack";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import HomeCard from "../../component/HomeCard";
+import SpotifyAPI from "../../api/SpotifyAPI";
 
 function Home() {
     const [Result, setResult] = useState("");
-    //const [Recommendation, serRecommendation] = useState("");
+    const [RecentlyPlay, setRecentlyPlay] = useState([]);
+    const [topTracks, setTopTracks] = useState([]);
     const token = useSelector((state) => state.accesstoken.value);
-    const topAlbum = () => {
-        fetch('https://api.spotify.com/v1/me/top/tracks', {
-            method: 'GET', headers: {
-                'Authorization': 'Bearer ' + token
-                }
-            }).then(res => res.json())
-            .then(i => {
-                {console.log(i.items)}
-            })
-            .catch((error) => console.log(error))
+    
+    const getRecentlyPlayed = async () => {
+        const {
+            data: tracks
+        } = await SpotifyAPI.getRecentlyPlayed(token);
+        setRecentlyPlay(tracks.items);
     }
 
+    const getTopTracks = async () => {
+        const {
+            data: tracks
+        } = await SpotifyAPI.getTopTracks(token);
+        setTopTracks(tracks.items);
+    }
+
+    useEffect(() => {
+        getRecentlyPlayed();
+        getTopTracks();
+    }, [])
+
     return (
-        <div>
+        <div className="container-home">
              <SearchTrack setResult={setResult}/>
-             {Result === "" ? topAlbum() : 
+             {console.log(RecentlyPlay)}
+             <h1 className="heading-one">Recently Played</h1>
+             {Result === "" ?
+             (  
+             <>
+                <ul className="content">
+                    {RecentlyPlay.map(e => 
+                        <HomeCard data={e.track} key={e.track.id}/> 
+                    )}
+                </ul>
+                <h1 className="heading-one">Your Top Tracks</h1>
+                <ul className="content">
+                    {topTracks.map(e => 
+                        <HomeCard data={e} key={e.id}/> 
+                    )}
+                </ul>
+            </>   
+                 
+             )
+             : 
              (
                 <ul className="content">
-                {Result.map(e =>
-                <li key={e.id}>
-                    <Track 
-                    data={e} 
-                    status={false} 
-                    tracktype="card"
-                    />
-                </li> )} 
-            </ul>   
+                    {Result.map(e =>
+                        <HomeCard data={e} key={e.id}/>
+                    )} 
+                </ul>   
              )
              }
         </div>

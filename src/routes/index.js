@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux';
 import CreatePlaylist from '../pages/CreatePlaylist';
 import Login from "../pages/Login";
 import Home from "../pages/Home";
-import Navbar from "../component/Navbar";
 import UserProfile from "../pages/UserProfile";
 import Footer from "../component/Footer";
+import Navbar from "../component/Navbar";
 
 function Routes() {
     const token = useSelector((state) => state.accesstoken.value);
     const routes = (
         <>
+        <div className="container-all">
             <Navbar />
-            <Switch>         
+            <Switch>   
                 <Route path="/CreatePlaylist">
                     <CreatePlaylist />
                 </Route>
@@ -22,9 +23,10 @@ function Routes() {
                 </Route>
                 <Route path="/">
                     <Home />
-                </Route> 
+                </Route>
             </Switch>
-            <Footer />
+        </div>
+        <Footer />
         </>
         
     )

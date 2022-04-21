@@ -2,7 +2,7 @@ import React from "react";
 import { fireEvent, render } from "@testing-library/react"
 import { Provider } from "react-redux";
 import store from '../../../../store/store';
-import SearchTrack from "../../SearchTrack";
+import SearchTrack from "..";
 
 describe("Search track testing", () => {
 

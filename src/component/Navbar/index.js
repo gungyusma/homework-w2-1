@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { setToken } from "../../store/token-slice";
 import './Navbar.css';
-import { FaBars } from 'react-icons/fa';
-import { IoIosArrowBack } from 'react-icons/io';
+import spotifylogo from "../../data/spotify.png";
 import { SidebarData } from "./SidebarData";
 import { BiLogOut } from "react-icons/bi";
+import usertemplate from "../../data/user-template.jpg";
+import { setUser } from "../../store/user-slice";
+import { useEffect } from "react";
+import SpotifyAPI from "../../api/SpotifyAPI";
 
 function Navbar() {
     const token = useSelector((state) => state.accesstoken.value);
-    const [isNavActive, setIsNavActive] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = useSelector((state) => state.userdetails.value)
 
     const handleLogout = () => {
         dispatch(setToken(null));
@@ -20,30 +23,33 @@ function Navbar() {
         history.push('/');
     };
 
-    const handleNav = () => {
-        setIsNavActive(!isNavActive);
+
+    const fetchUser = async () => {
+        const {
+            data: user
+        } = await SpotifyAPI.getUser(token);
+        dispatch(setUser(user));
     }
+    
+    useEffect(() => {
+        fetchUser();
+    }, [])
 
     const nav = (
         <>
+        
             <div className="unactive-nav">
-                <FaBars onClick={handleNav} color="white"/>
-                {console.log(isNavActive)}
-                <button onClick={handleLogout} className="btn-logout-unactive">
-                    <BiLogOut />
-                    <span>
-                        Logout
-                    </span>
-                    
-                </button>
-            </div>
-            <div className={isNavActive ? 'nav-menu active' : 'nav-menu'}>
+                <div className="profile-wrapper">
+                <img className="profile-nav" src={usertemplate}></img>
+                <p>{user.display_name}</p>
                 
-                <ul className="navigation-ul" onClick={handleNav}>
+                </div>
+            </div>
+            <div className="container-sidebar">
+            <div className='nav-menu active'>
+                <ul className="navigation-ul">
                     <li className='navbar-toggle'>
-                        <Link to="#">
-                            <IoIosArrowBack color="white" />
-                        </Link>
+                        <img src={spotifylogo} className="spotify-logo"></img>
                     </li>
                     {SidebarData.map((item, index) => {
                         return (
@@ -65,6 +71,8 @@ function Navbar() {
                     
                 </button>
             </div>
+            </div>
+            
         </>
         
     )

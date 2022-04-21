@@ -7,13 +7,12 @@ function PlaylistCard({playlist}) {
         playlist : PropTypes.any
 
     }
-
     return (
         <div className="gridItem">
             <img src={playlist.images[1].url}></img>
             <h1>{playlist.name}</h1>
             <p>{playlist.type}</p>
-            <a href={playlist.external_urls.spotify}>View</a>
+            <a href={playlist.external_urls.spotify} target="_blank" rel="noreferrer">View</a>
         </div>
     )
 

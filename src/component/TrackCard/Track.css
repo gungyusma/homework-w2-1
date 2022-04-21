@@ -1,5 +1,7 @@
 .Tracks {
     text-align: center;
+    text-decoration: none;
+    color: white;
 
   }
   
@@ -42,6 +44,11 @@
 
   /* List css */
 
+  .List {
+    display: flex;
+    flex-direction: row;
+  }
+
   
   .List img {
     width: 50px;
@@ -62,8 +69,9 @@
     color: black;
   }
 
-  td {
+  .List td {
     text-align: left;
     padding: 5px;
+    width: 170px;
     border-bottom: 0.5px solid rgba(120, 120, 120, 0.158);
   }

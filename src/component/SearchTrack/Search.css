@@ -1,19 +1,19 @@
 .heading-one {
     color: white;
-    margin: 40px 30px 0 50px;
+    margin: 20px 30px 0 50px;
     font-size: 20px;
   }
 
   .heading2 {
-    text-align: center;
+    text-align: left;
     color: white;
     font-size: 20px;
 
-    margin: 50px 0; 
+    margin: 50px 50px; 
   }
 
   .input-search {
-    width: 30%;
+    width: 300px;
     padding: 12px;
     border-radius: 5px;
     background-color: #aeaeae15;
@@ -34,7 +34,7 @@
   
   
   .content li {
-      inline-size: 160px;
+      inline-size: 120px;
       list-style: none;
       margin: 17px;
       color: white;

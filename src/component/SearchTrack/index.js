@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Search.css';
 import { useSelector } from 'react-redux';
-
+//import SpotifyAPI from '../../../api/SpotifyAPI';
 function SearchTrack({ setResult }) {
 
     SearchTrack.propTypes = {
@@ -12,6 +12,13 @@ function SearchTrack({ setResult }) {
 
     const [searchQuery, setsearchQuery] = useState([]);
     const token = useSelector((state) => state.accesstoken.value);
+
+    // const handleSearch = async () => {
+    //     const {
+    //         data: tracks
+    //     } = await SpotifyAPI.getSearchTrack(token, searchQuery);
+    //     setResult(tracks.items);
+    // }
 
     const handleSearch = (event) => {
         event.preventDefault();
