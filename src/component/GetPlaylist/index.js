@@ -28,6 +28,7 @@ function GetPlaylist({userid}) {
     return (
         <div className="playlist-content">
             <div className="gridContainer" data-testid="get-my-playlist">
+                {console.log(playlist)}
                 {playlist.map(e =>
                     <PlaylistCard playlist={e} key={e.id} />
                 )} 

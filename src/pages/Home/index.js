@@ -39,7 +39,7 @@ function Home() {
              <h1 className="heading-one">Recently Played</h1>
              {Result === "" ?
              (  
-             <>
+             <> 
                 <ul className="content">
                     {RecentlyPlay.map(e => 
                         <HomeCard data={e.track} key={e.track.id}/> 

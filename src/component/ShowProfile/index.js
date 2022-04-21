@@ -12,9 +12,8 @@ function ShowProfile() {
     return (
         <>
         <div className="hero-item">    
-            { user.images.length === 0 ?  <img className="profile-pic" src={usertemplate}></img> : <img className="profile-pic" src={user.images[0].url}></img>}
-            
-            
+            {/* { user.images[0].url === undefined ?  <img className="profile-pic" src={usertemplate}></img> : <img className="profile-pic" src={user.images[0].url}></img>} */}
+            <img className="profile-pic" src={usertemplate}></img>
             <div className="user-greet">
                 <h1>{user.display_name}</h1> 
                 <p>followers : {user.followers.total}  •  account type : {user.type}</p>
