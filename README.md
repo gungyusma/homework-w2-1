@@ -36,4 +36,12 @@ or
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+## Preview
+#### Home Page : including search track, user's recently played tracks, and user's top tracks
+![](https://github.com/gungyusma/homework-w2-1/blob/master/documentation/homepage.gif)
 
+#### Create Playlist Page : including search track, select platlist's track, and create playlist
+![](https://github.com/gungyusma/homework-w2-1/blob/master/documentation/playlistpage.gif)
+
+#### Home Page : including show profile and playlists
+![](https://github.com/gungyusma/homework-w2-1/blob/master/documentation/profilepage.gif)
