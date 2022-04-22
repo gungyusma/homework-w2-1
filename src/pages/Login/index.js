@@ -10,7 +10,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleToken = () => {
-    window.location.href= `https://accounts.spotify.com/authorize?client_id=f43e3cdcf7214718ad9213d01ec771a4&response_type=token&redirect_uri=https://homework-w2-1.vercel.app/&scope=playlist-modify-private user-read-recently-played user-top-read`
+    window.location.href= `https://accounts.spotify.com/authorize?client_id=f43e3cdcf7214718ad9213d01ec771a4&response_type=token&redirect_uri=https://homework-w2-1-5357yiu5w-gungyusma.vercel.app&scope=playlist-modify-private user-read-recently-played user-top-read`
   } 
 
   useEffect(() => {

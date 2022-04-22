@@ -35,17 +35,18 @@ function Home() {
     return (
         <div className="container-home">
              <SearchTrack setResult={setResult}/>
-             {console.log(RecentlyPlay)}
-             <h1 className="heading-one">Recently Played</h1>
+             
+             
              {Result === "" ?
              (  
              <> 
+                {RecentlyPlay.length === 0 ? (<h1 className="heading2">Search any tracks.</h1>) :(<h1 className="heading-one">Recently Played</h1>) }
                 <ul className="content">
                     {RecentlyPlay.map(e => 
                         <HomeCard data={e.track} key={e.track.id}/> 
                     )}
                 </ul>
-                <h1 className="heading-one">Your Top Tracks</h1>
+                {RecentlyPlay.length === 0 ? false :(<h1 className="heading-one">Your Top Tracks</h1>) }
                 <ul className="content">
                     {topTracks.map(e => 
                         <HomeCard data={e} key={e.id}/> 

@@ -37,7 +37,7 @@ function Navbar() {
 
     const nav = (
         <>
-        
+            {console.log(token)}
             <div className="unactive-nav">
                 <div className="profile-wrapper">
                 <img className="profile-nav" src={usertemplate}></img>
