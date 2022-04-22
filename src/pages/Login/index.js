@@ -10,7 +10,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleToken = () => {
-    window.location.href= `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_API_KEY}&response_type=token&redirect_uri=http://localhost:3000&scope=playlist-modify-private user-read-recently-played user-top-read`
+    window.location.href= `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_API_KEY}&response_type=token&redirect_uri=https://homework-w2-1.vercel.app/&scope=playlist-modify-private user-read-recently-played user-top-read`
   } 
 
   useEffect(() => {
