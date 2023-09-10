@@ -69,53 +69,70 @@ function FormPlaylist({SelectedQuery, setSelectedQuery}) {
     }
 
     return (
-        <div className='formplaylist'>
-            <form onSubmit={handleSubmit}>
-                <input
-                type="text"
-                name="title"
-                value={fields.title}
-                onChange={handleFields}
-                placeholder="Your playlist's title"
-                className="input-play"
-                minLength="10"
-                data-testid="input-playlist"
-                required
-                ></input><br></br>
+        <><div className="flex mt-4 items-center justify-center">
 
-                <input
-                type="text"
-                name="description"  
-                value={fields.description}
-                onChange={handleFields}
-                placeholder="Description"
-                data-testid="input-playlist"
-                className="input-play"
-                required
-                ></input><br></br>
-                <div className='playlistwrap'>
-                    <table>
+            <div className='w-1/2 mr-8'>
+               
+                <form onSubmit={handleSubmit}>
+                <div className="mb-6">
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Title</label>
+                    <input 
+                     type="text"
+                     name="title"
+                     value={fields.title}
+                     onChange={handleFields}
+                     placeholder="Your playlist's title"
+                     minLength="10"
+                     data-testid="input-playlist"
+                     required
+                     className="bg-gray-800 border border-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+                <div className="mb-6">
+                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Description</label>
+                    <textarea 
+                    type="text"
+                    name="description"
+                    value={fields.description}
+                    onChange={handleFields}
+                    placeholder="Description"
+                    data-testid="input-playlist"
+                    required
+                    className="bg-gray-800 border border-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                </div>
+                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                </form>
+
+            </div>
+
+
+            <div className="w-1/2">
+                
+                <div className="relative overflow-x-hidden overflow-y-scroll h-64 shadow-md sm:rounded-lg">
+                <span className='text-white'>Selected songs</span>
+                    <table className="w-full pl-4 text-sm text-left text-gray-500 dark:text-gray-400"> 
                         <tbody>
-                            {SelectedQuery.map(e =>
-                                <Track 
-                                data={e}
-                                status={true}
-                                setSelectedQuery={setSelectedQuery} 
-                                SelectedQuery={SelectedQuery}
-                                key={e.id}
-                                tracktype="list"
-                                />)} 
+                            {(SelectedQuery.length === 0 ? <p className='m-4'>No songs selected</p> : (
+                                SelectedQuery.map(e => <Track
+                                    data={e}
+                                    status={true}
+                                    setSelectedQuery={setSelectedQuery}
+                                    SelectedQuery={SelectedQuery}
+                                    key={e.id}
+                                    tracktype="list" />)
+                            ))}
                         </tbody>
                     </table>
                 </div>
-                <button type="Submit" className="btn-create">Create</button>
-            </form>
-            <PopupSuccess
-            onClose={popupCloseHandler}
-            show={visibility}
-            title="Success"
-            ></PopupSuccess>
-        </div> 
+
+            </div>
+        </div><div className='formplaylist'>
+                
+                <PopupSuccess
+                    onClose={popupCloseHandler}
+                    show={visibility}
+                    title="Success"
+                ></PopupSuccess>
+            </div></> 
     )
     
 }

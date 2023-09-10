@@ -5,7 +5,7 @@ const SpotifyAPI = {
     getRecentlyPlayed(token) {
         const config = {
             method: 'get',
-            url: `https://api.spotify.com/v1/me/player/recently-played?limit=6`,
+            url: `https://api.spotify.com/v1/me/player/recently-played?limit=8`,
             headers: { Authorization: `Bearer ${token}` },
           };
       
@@ -15,16 +15,16 @@ const SpotifyAPI = {
     getTopTracks(token) {
         const config = {
             method: 'get',
-            url: `https://api.spotify.com/v1/me/top/tracks?limit=6`,
+            url: `https://api.spotify.com/v1/me/top/tracks?limit=12`,
             headers: { Authorization: `Bearer ${token}` },
           };
           return axios(config);
     },
 
-    getSearchTrack(token, searchQuery) {
+    getSearchTrack(token, searchQuery, offset, limit) {
         const config = {
             method: 'get',
-            url: `https://api.spotify.com/v1/search?q=${searchQuery}&type=track&limit=24`,
+            url: `https://api.spotify.com/v1/search?q=${searchQuery}&type=track&offset=${offset}&limit=${limit}`,
             headers: { Authorization: `Bearer ${token}` },
           };
           return axios(config);

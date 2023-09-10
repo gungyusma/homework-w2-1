@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CreatePlaylist from '../pages/CreatePlaylist';
 import Login from "../pages/Login";
 import Home from "../pages/Home";
-import UserProfile from "../pages/UserProfile";
+//import UserProfile from "../pages/UserProfile";
 import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 
@@ -18,9 +18,9 @@ function Routes() {
                 <Route path="/CreatePlaylist">
                     <CreatePlaylist />
                 </Route>
-                <Route path="/UserProfile">
+                {/* <Route path="/UserProfile">
                     <UserProfile />
-                </Route>
+                </Route> */}
                 <Route path="/">
                     <Home />
                 </Route>

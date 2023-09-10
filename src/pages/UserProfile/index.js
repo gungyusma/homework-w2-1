@@ -10,7 +10,7 @@ function UserProfile() {
 
     return(
         <>
-        <div className="container-user">
+        <div className="container-user p-4 sm:ml-64">
             <ShowProfile />
             <GetPlaylist userid={user.id}/>
         </div>
