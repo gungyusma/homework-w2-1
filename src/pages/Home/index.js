@@ -55,7 +55,6 @@ function Home() {
                 <SearchTrack setResult={setResult} offset={offset} limit={limit}/> 
             </div>
            
-             
              {Result === "" ?
              (  
              <> 
